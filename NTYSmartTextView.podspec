@@ -1,37 +1,23 @@
-#
-# Be sure to run `pod spec lint NAME.podspec' to ensure this is a
-# valid spec and remove all comments before submitting the spec.
-#
-# To learn more about the attributes see http://guides.cocoapods.org/syntax/podspec.html
-#
 Pod::Spec.new do |s|
   s.name             = "NTYSmartTextView"
   s.version          = "0.1.0"
-  s.summary          = "A short description of NTYSmartTextView."
+  s.summary          = "NSTextView with smart features"
   s.description      = <<-DESC
-                       An optional longer description of NTYSmartTextView
-
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
+                       NSTextView with following smart features
+                       * Smart indent
+                       * Soft tab
+                       * Auto pair completion
                        DESC
-  s.homepage         = "http://EXAMPLE/NAME"
-  s.screenshots      = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
-  s.license          = 'MIT'
+  s.homepage         = "https://github.com/naoty/NTYSmartTextView"
+  # s.screenshots      = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+  s.license          = "MIT"
   s.author           = { "Naoto Kaneko" => "naoty.k@gmail.com" }
-  s.source           = { :git => "http://EXAMPLE/NAME.git", :tag => s.version.to_s }
-  s.social_media_url = 'https://twitter.com/NAME'
+  s.source           = { git: "https://github.com/naoty/NTYSmartTextView", tag: s.version.to_s }
+  s.social_media_url = "https://twitter.com/naoty_k"
 
-  # s.platform     = :ios, '5.0'
-  # s.ios.deployment_target = '5.0'
-  # s.osx.deployment_target = '10.7'
+  s.platform     = :osx
   s.requires_arc = true
 
-  s.source_files = 'Classes'
-  s.resources = 'Resources'
-
-  s.ios.exclude_files = 'Classes/osx'
-  s.osx.exclude_files = 'Classes/ios'
-  # s.public_header_files = 'Classes/**/*.h'
-  # s.frameworks = 'SomeFramework', 'AnotherFramework'
-  # s.dependency 'JSONKit', '~> 1.4'
+  s.source_files = "Classes"
+  s.resources = "Resources"
 end
