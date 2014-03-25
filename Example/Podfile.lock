@@ -1,0 +1,14 @@
+PODS:
+  - NTYSmartTextView (0.1.0)
+
+DEPENDENCIES:
+  - NTYSmartTextView (from `../NTYSmartTextView.podspec`)
+
+EXTERNAL SOURCES:
+  NTYSmartTextView:
+    :path: ../NTYSmartTextView.podspec
+
+SPEC CHECKSUMS:
+  NTYSmartTextView: eb306dc65864ea3b63aa6f7c8135e53f2a3544eb
+
+COCOAPODS: 0.29.0

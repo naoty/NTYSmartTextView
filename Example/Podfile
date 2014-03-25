@@ -1,7 +1,1 @@
-pod "NTYSmartTextView", :path => "../NTYSmartTextView.podspec"
-
-target "Demo" do
-end
-
-target "DemoTests" do
-end
+pod "NTYSmartTextView", path: "../NTYSmartTextView.podspec"
