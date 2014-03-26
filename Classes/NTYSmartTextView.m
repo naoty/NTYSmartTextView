@@ -55,11 +55,26 @@ NSString * const kIndentPatternString = @"^(\\t|\\s)+";
     }
 }
 
+- (void)insertTab:(id)sender
+{
+    if (self.softTabEnabled) {
+        NSMutableString *softTab = [NSMutableString new];
+        for (NSInteger i = 0; i < self.tabWidth; i++) {
+            [softTab appendString:@" "];
+        }
+        [self insertText:softTab];
+    } else {
+        [super insertTab:sender];
+    }
+}
+
 #pragma mark - Private methods
 
 - (void)setup
 {
     self.smartIndentEnabled = YES;
+    self.softTabEnabled = YES;
+    self.tabWidth = 4;
 }
 
 - (NSString *)currentLine
