@@ -5,8 +5,8 @@
 
 ## Features
 
-- Smart indent
-- Soft tab
+- Smart indent: Keep the width of indent when breaking line.
+- Soft tab: Input spaces instead of tabs by entering TAB key.
 
 ## Installation
 
@@ -30,7 +30,7 @@ self.textView.smartIndentEnabled = NO;
 
 ### Soft tab
 
-```
+```objective-c
 self.textView.softTabEnabled = NO;
 
 // You also can change the width of soft tab from 4.

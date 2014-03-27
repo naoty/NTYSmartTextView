@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../NTYSmartTextView.podspec
 
 SPEC CHECKSUMS:
-  NTYSmartTextView: eb306dc65864ea3b63aa6f7c8135e53f2a3544eb
+  NTYSmartTextView: db9dbc9c7765494b40e9c51868fdca8259189d67
 
 COCOAPODS: 0.29.0

@@ -4,8 +4,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="NTYDocument">
+        <customObject id="-2" userLabel="File's Owner" customClass="NTYWindowController">
             <connections>
+                <outlet property="textView" destination="vin-NI-abX" id="PgD-gK-Djt"/>
                 <outlet property="window" destination="xOd-HO-29H" id="JIz-fz-R2o"/>
             </connections>
         </customObject>
