@@ -3,10 +3,13 @@
 [![Version](http://cocoapod-badges.herokuapp.com/v/NTYSmartTextView/badge.png)](http://cocoadocs.org/docsets/NTYSmartTextView)
 [![Platform](http://cocoapod-badges.herokuapp.com/p/NTYSmartTextView/badge.png)](http://cocoadocs.org/docsets/NTYSmartTextView)
 
+![Screenshot](./screenshot.gif)
+
 ## Features
 
 - Smart indent: Keep the width of indent when breaking line.
 - Soft tab: Input spaces instead of tabs by entering TAB key.
+- Auto pair completion: Automatically complete closing braces and quotes.
 
 ## Installation
 
@@ -35,4 +38,10 @@ self.textView.softTabEnabled = NO;
 
 // You also can change the width of soft tab from 4.
 self.textView.tabWidth = 2;
+```
+
+### Auto pair completion
+
+```objective-c
+self.textView.autoPairCompletionEnabled = NO;
 ```

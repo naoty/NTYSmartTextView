@@ -17,4 +17,7 @@
 @property (nonatomic) BOOL softTabEnabled;
 @property (nonatomic) NSUInteger tabWidth;
 
+// Auto Pair Completion
+@property (nonatomic) BOOL autoPairCompletionEnabled;
+
 @end

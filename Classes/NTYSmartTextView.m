@@ -10,6 +10,7 @@
 
 @interface NTYSmartTextView ()
 @property (nonatomic, readonly) NSString *currentLine;
+@property (nonatomic) NSArray *pairCharacters;
 @end
 
 @implementation NTYSmartTextView
@@ -68,6 +69,70 @@ NSString * const kIndentPatternString = @"^(\\t|\\s)+";
     }
 }
 
+- (void)insertText:(id)aString
+{
+    [super insertText:aString];
+    
+    if (!self.autoPairCompletionEnabled) {
+        return;
+    }
+    
+    NSString *string = (NSString *)aString;
+    
+    if ([string isEqualToString:@"("]) {
+        [super insertText:@")"];
+        [super moveBackward:self];
+    }
+    
+    if ([string isEqualToString:@"["]) {
+        [super insertText:@"]"];
+        [super moveBackward:self];
+    }
+    
+    if ([string isEqualToString:@"{"]) {
+        [super insertText:@"}"];
+        [super moveBackward:self];
+    }
+    
+    if ([string isEqualToString:@"\""]) {
+        [super insertText:@"\""];
+        [super moveBackward:self];
+    }
+    
+    if ([string isEqualToString:@"'"]) {
+        [super insertText:@"'"];
+        [super moveBackward:self];
+    }
+    
+    if ([string isEqualToString:@"`"]) {
+        [super insertText:@"`"];
+        [super moveBackward:self];
+    }
+}
+
+- (void)deleteBackward:(id)sender
+{
+    if (!self.autoPairCompletionEnabled) {
+        [super deleteBackward:sender];
+        return;
+    }
+    
+    if ([self isStartOrEndOfLine]) {
+        [super deleteBackward:sender];
+        return;
+    }
+    
+    NSRange surroundRange = NSMakeRange(self.selectedRange.location - 1, 2);
+    NSString *surroundString = [self.string substringWithRange:surroundRange];
+    
+    if ([self.pairCharacters indexOfObject:surroundString] != NSNotFound) {
+        [super deleteForward:sender];
+        [super deleteBackward:sender];
+    } else {
+        [super deleteBackward:sender];
+    }
+}
+
 #pragma mark - Private methods
 
 - (void)setup
@@ -75,12 +140,32 @@ NSString * const kIndentPatternString = @"^(\\t|\\s)+";
     self.smartIndentEnabled = YES;
     self.softTabEnabled = YES;
     self.tabWidth = 4;
+    self.autoPairCompletionEnabled = YES;
+    
+    // Disable to enable auto quotes pair completion.
+    self.automaticQuoteSubstitutionEnabled = !self.autoPairCompletionEnabled;
+    
+    self.pairCharacters = @[@"()", @"[]", @"{}", @"\"\"", @"''", @"``"];
 }
 
 - (NSString *)currentLine
 {
     NSRange currentLineRange = [self.string lineRangeForRange:self.selectedRange];
     return [self.string substringWithRange:currentLineRange];
+}
+
+- (BOOL)isEndOfLine
+{
+    NSUInteger lineEnd;
+    [self.string getLineStart:nil end:&lineEnd contentsEnd:nil forRange:self.selectedRange];
+    return self.selectedRange.location == lineEnd;
+}
+
+- (BOOL)isStartOrEndOfLine
+{
+    NSUInteger lineStart, lineEnd;
+    [self.string getLineStart:&lineStart end:&lineEnd contentsEnd:nil forRange:self.selectedRange];
+    return self.selectedRange.location == lineStart || self.selectedRange.location == lineEnd;
 }
 
 @end
